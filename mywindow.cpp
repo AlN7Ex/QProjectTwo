@@ -43,16 +43,22 @@ MyWindow::MyWindow(QWidget *parent)
     mainVlayout->addLayout(thirdHlayout);
     mainVlayout->addWidget(buttonClear);
 
-    connect(buttonOne, SIGNAL(clicked()), this, SLOT(setValueLineOne()));
-    connect(buttonTwo, SIGNAL(clicked()), this,SLOT(setValueLineTwo()));
-    connect(buttonRand, SIGNAL(clicked()), this, SLOT(setRandValue()));
-    connect(buttonClear, SIGNAL(clicked()), this, SLOT(clearLines()));
+    connect(buttonOne, &QPushButton::clicked, this, &MyWindow::setValueLineOne);
+    connect(buttonTwo, &QPushButton::clicked, this, &MyWindow::setValueLineTwo);
+    connect(buttonRand, &QPushButton::clicked, this, &MyWindow::setRandValue);
+    connect(buttonClear, &QPushButton::clicked, this, &MyWindow::clearLines);
+    //connect(buttonOne, SIGNAL(clicked()), this, SLOT(setValueLineOne()));
+    //connect(buttonTwo, SIGNAL(clicked()), this,SLOT(setValueLineTwo()));
+    //connect(buttonRand, SIGNAL(clicked()), this, SLOT(setRandValue()));
+    //connect(buttonClear, SIGNAL(clicked()), this, SLOT(clearLines()));
 
-    connect(checkBoxOne, SIGNAL(stateChanged(int)), this, SLOT(StateBtnOne(int)));
-    connect(checkBoxTwo, SIGNAL(stateChanged(int)), this, SLOT(StateLineTwo(int)));
+    connect(checkBoxOne, &QCheckBox::stateChanged, this, &MyWindow::StateBtnOne);
+    connect(checkBoxTwo, &QCheckBox::stateChanged, this, &MyWindow::StateLineTwo);
+    //connect(checkBoxOne, SIGNAL(stateChanged(int)), this, SLOT(StateBtnOne(int)));
+    //connect(checkBoxTwo, SIGNAL(stateChanged(int)), this, SLOT(StateLineTwo(int)));
 
-    connect(slider,SIGNAL(valueChanged(int)), spinBox,SLOT(setValue(int)));
-    connect(spinBox,SIGNAL(valueChanged(int)), slider,SLOT(setValue(int)));
+    connect(slider,SIGNAL(valueChanged(int)), spinBox, SLOT(setValue(int)));
+    connect(spinBox,SIGNAL(valueChanged(int)), slider, SLOT(setValue(int)));
 
     setLayout(mainVlayout);
 
